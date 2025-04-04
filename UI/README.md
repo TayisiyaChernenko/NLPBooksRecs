@@ -1,0 +1,1 @@
+The frontend of the project will be built with React and the build tool Vite, connected to a Dynamo DB for real-time querying when a user searches a book title.
