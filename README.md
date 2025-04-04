@@ -1,5 +1,7 @@
 # NLPBooksRecs
-
+### Team : 
+Abby East
+Tayisiya Chernenko
 ### Scope
 For this class project, we will develop a working prototype of an interactive website that allows users
 to input a book title and receive structured insights from its reviews. The prototype will include:
