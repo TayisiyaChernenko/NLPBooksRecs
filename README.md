@@ -1,6 +1,6 @@
 # NLPBooksRecs
 ### Team : 
-Abby East
+Abby East, 
 Tayisiya Chernenko
 ### Scope
 For this class project, we will develop a working prototype of an interactive website that allows users
