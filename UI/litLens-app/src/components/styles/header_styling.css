@@ -1,13 +1,23 @@
+.header{
+  display: flex;
+  flex-direction: column;
+  align-self: flex-start;
+  top: 0;
+  width:"100vw";            
+  position: "sticky";
+
+}
 .header-container {
     background-color: #F4EFDC;
     display: flex;
     flex-direction: row;
     height: 20 hv;
-    padding: 10px;
+    margin-bottom: 10px;
     border-radius: 4px;
+    padding: 0 px ;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin: 10px;
     align-items: center;
+
   }
   
   .header-title {
@@ -21,15 +31,20 @@
   .nav-text{
     color: grey;
     font-size: 16px;
-    padding-left: 10px;
+    margin-left: 10px;
   }
 
   .register-container {
     margin-left: auto;
-    margin-right: 0px;
+    margin-right: 10px;
     display: flex;
     flex-direction: row;
   }
-
+  .photo {
+    height: 20px;
+    width: 20px;
+    margin-left:10px
+  }
+  
 
    

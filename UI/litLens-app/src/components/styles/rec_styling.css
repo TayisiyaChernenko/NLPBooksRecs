@@ -2,13 +2,12 @@
     background-color: #FAF9F5;
     display: flex;
     flex-direction: column;
-    padding: 10px;
     border-radius: 4px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin: 10px;
     align-items: flex-start;
     align-self: flex-start;
-    width: 50%;
+    width: 60%;
+    height : 70vh;
   }
 
   .recs-title {

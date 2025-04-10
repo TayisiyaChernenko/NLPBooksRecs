@@ -1,4 +1,4 @@
-import "./rec_styling.css"
+import "./styles/rec_styling.css"
 const Recs = () => {
     
     return (
