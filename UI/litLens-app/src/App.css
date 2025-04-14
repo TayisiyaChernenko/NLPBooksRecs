@@ -1,0 +1,36 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.body{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 10px;
+}
+.slogan-to-bottom{
+  display: flex;
+  flex-direction: row;
+  align-self: flex-end;
+  margin-bottom: 0;
+  margin-top: auto;
+}
+
+.bottom-container{
+  background-color: #ebe9dd;
+  display: flex;
+  flex-direction: column;
+  height: 10 vh;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  align-items: center;
+  bottom: 0;
+  padding: 4px;
+  width: 90vw;
+  position:fixed;
+}
+.page {
+  padding:0;
+  margin:0;
+}
