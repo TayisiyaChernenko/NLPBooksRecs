@@ -1,32 +1,57 @@
 import "./styles/rhs_styling.css"
 import magnifyingGlass from '../assets/Search.png'
+import NLPOutput from './nlp_output'
+import { useState } from 'react'
+
 const RHS = () => {
+    const [showNLPOutput, setShowNLPOutput] = useState(false);
+    const [currentInput, setCurrentInput] = useState('');
+    const [submittedSearch, setSubmittedSearch] = useState('');
+    
+    const handleInputChange = (e) => {
+        setCurrentInput(e.target.value);
+    };
+
+    const handleSearch = () => {
+        if (currentInput.trim()) {
+            setSubmittedSearch(currentInput);
+            setShowNLPOutput(true);
+        }
+    };
+
+    const handleDoubleClick = () => {
+        setCurrentInput('');
+    };
     
     return (
         <div className="rhs-container">
-            <div className="summary-box">
-                <p className="rhs-title">Book Summary</p>
-                <p>Temporary summary </p>
-                <p>Blah Blah blah </p>
-            </div>
-            <div className="center-graphs">
-            <div className="graphs">
-                <div className="graph-box" marginRight = {20}>
-                    <p>Some graph</p>
-                </div>
-                <div className="graph-box">
-                    <p>Other graph</p>
-                </div>
-            </div>
-            </div>
+            {showNLPOutput && <NLPOutput searchText={submittedSearch}/>}
             <div className="to-bottom">
-            <div className="search">
-            <label>
-            <input name="myInput" defaultValue="Search by book title ... " className="search-box"/>
-            </label>
-            <img src={magnifyingGlass} className="photo"/>
-        </div>
-        </div>
+                <div className="search">
+                    <label>
+                        <input 
+                            name="myInput" 
+                            placeholder="Search by book title ... " 
+                            className="search-box"
+                            value={currentInput}
+                            onChange={handleInputChange}
+                            onKeyDown={(e) => {
+                                if (e.key === 'Enter') {
+                                    handleSearch();
+                                }
+                            }}
+                            onDoubleClick={handleDoubleClick}
+                            type="text"
+                        />
+                    </label>
+                    <button 
+                        className="search-button"
+                        onClick={handleSearch}
+                    >
+                        <img src={magnifyingGlass} className="photo"/>
+                    </button>
+                </div>
+            </div>
         </div>
     );
 };
