@@ -17,8 +17,7 @@
 
   .search-box{
     font-size: 16px;
-    border-radius: 40px;
-    color:grey;;
+    color:grey;
   }
   .to-bottom{
     display: flex;
@@ -33,7 +32,6 @@
     flex-direction: row;
     align-items: center;
     align-self:flex-end;
-
   }
   .summary-box{
     background-color: #FAF9F5;
@@ -57,8 +55,8 @@
     
   }
   .graph-box{
-    background-color: #807e81;
-    box-shadow: 0 2px 4px plum;
+    background-color: #e2e2e2;
+    box-shadow: 0 2px 4px rgb(215, 176, 215);
     margin-right: 10px;
     height: 20vh;
     width: 15vw;
@@ -68,6 +66,21 @@
   }
   .photo {
     height: 20px;
-    width: 20px;
+    margin: 0;
+    margin-right: 10px;
+    padding: 0;
+  }
+
+  .search-button{
+    margin-left: 5px;
+    display: flex;
+    height: 30px;
+    width: 40px;  
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    cursor: pointer;
   }
   
