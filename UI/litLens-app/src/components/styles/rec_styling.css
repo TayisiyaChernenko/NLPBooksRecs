@@ -18,3 +18,29 @@
   .recs-text {
     font-size: 14px;
   }
+
+  .book-title {
+    font-size: 14px;
+    font-weight: bold;
+  }
+  .book-rating {
+    font-size: 14px;
+    color: #555;
+  }
+
+  .book-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .book-item {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .book-row {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+  }

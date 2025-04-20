@@ -9,6 +9,7 @@
   .rhs-title {
     font-size: 16px;
     font-weight: bold;
+    margin-bottom: 2px;
   }
 
   .rhs-text {
@@ -37,11 +38,30 @@
     background-color: #FAF9F5;
     display: flex;
     flex-direction: column;
-    padding: 10px;
+    padding: 15px;
     border-radius: 4px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     margin: 10px;
     align-items: flex-start;
+  }
+
+  .title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 8px;
+  }
+
+  .book-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+  }
+
+  .book-rating {
+    font-size: 14px;
+    color: #666;
   }
   .center-graphs{
     display: flex;
@@ -52,7 +72,6 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    
   }
   .graph-box{
     background-color: #e2e2e2;
@@ -82,5 +101,16 @@
     justify-content: center;
     padding: 0;
     cursor: pointer;
+  }
+  
+  .error {
+    color: #d32f2f;
+    font-size: 14px;
+    margin: 8px 0;
+  }
+
+  .result-text{
+    font-size: 12px;
+    color: #555;
   }
   
