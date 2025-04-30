@@ -74,11 +74,11 @@
     align-items: center;
   }
   .graph-box{
-    background-color: #e2e2e2;
+    background-color: #f8f6ed;
     box-shadow: 0 2px 4px rgb(215, 176, 215);
-    margin-right: 10px;
-    height: 20vh;
-    width: 15vw;
+    margin-right: 30px;
+    width: 22vw;
+    height: 30vh;
     display: flex;
     flex-direction: column;
     align-items: center;

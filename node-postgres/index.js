@@ -39,6 +39,22 @@ app.get('/api/books/top-rated', (req, res) => {
   })
 })              
 
+app.get('/api/summaries', (req, res) => {
+  const title = req.query.title;
+  if (!title) {
+    return res.status(400).send({ error: 'Title parameter is required' });
+  }
+  
+  merchant_model.getSummariesByTitle(title)
+  .then(response => {
+    res.status(200).send(response);
+  })
+  .catch(error => {
+    console.error('Database error:', error);
+    res.status(500).send({ error: 'Internal server error' });
+  })
+})
+
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });

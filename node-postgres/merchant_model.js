@@ -49,6 +49,28 @@ const getTopRatedBooks = () => {
     })
 }
 
+const getSummariesByTitle = (title) => {
+    return new Promise(function(resolve, reject) {
+      pool.query(
+        'SELECT * FROM summaries WHERE title = $1',
+        [title],
+        (error, results) => {
+          if (error) {
+            console.error('Database query error:', error);
+            reject(error);
+            return;
+          }
+          if (!results) {
+            console.error('No results object returned from query');
+            reject(new Error('No results returned from database'));
+            return;
+          }
+          resolve(results.rows || []);
+        }
+      )
+    })
+}
+
 // Test database connection
 pool.query('SELECT NOW()', (err, res) => {
   if (err) {
@@ -60,5 +82,6 @@ pool.query('SELECT NOW()', (err, res) => {
 
 module.exports = {
     searchBooks,
-    getTopRatedBooks
+    getTopRatedBooks,
+    getSummariesByTitle
 }
