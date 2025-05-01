@@ -1,6 +1,7 @@
 import "./styles/rhs_styling.css"
 import { useState, useEffect } from 'react'
 import WordCloud from 'react-wordcloud';
+import expandIcon from '../assets/expand.png';
 
 const NLPOutput = ({ searchText }) => {
     
@@ -10,6 +11,12 @@ const NLPOutput = ({ searchText }) => {
     const [summaryData, setSummaryData] = useState(null);
     const [summaryLoading, setSummaryLoading] = useState(false);
     const [summaryError, setSummaryError] = useState(null);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    // Reset modal state when searchText changes
+    useEffect(() => {
+        setIsModalOpen(false);
+    }, [searchText]);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -17,6 +24,8 @@ const NLPOutput = ({ searchText }) => {
             
             setLoading(true);
             setError(null);
+            setBookData(null);
+            setSummaryData(null);
             
             try {
                 const response = await fetch(`http://localhost:3001/api/books?title=${encodeURIComponent(searchText)}`);
@@ -96,12 +105,62 @@ const NLPOutput = ({ searchText }) => {
             
             return words.map((word, index) => ({
                 text: word,
-                value: (weights[index] + 15) * 10 // Scale the values for better visualization
+                value: (weights[index] + 10) * 10 // Scale the values for better visualization
             }));
         } catch (e) {
             console.error('Error processing word cloud data:', e);
             return [];
         }
+    };
+
+    const GraphsModal = () => {
+        if (!isModalOpen) return null;
+
+        return (
+            <div className="modal-overlay" onClick={() => setIsModalOpen(false)}>
+                <div className="modal-content" onClick={e => e.stopPropagation()}>
+                    <button className="close-modal" onClick={() => setIsModalOpen(false)}>×</button>
+                    <div className="modal-graphs">
+                        <div className="expanded-graph-box">
+                            <h3 className="modal-graphs-h3">Top Positive Words</h3>
+                            <WordCloud
+                                words={processWordCloudData(bookData.positive_words, bookData.positive_weights)}
+                                options={{
+                                    rotations: 0,
+                                    fontSizes: [24, 46],
+                                    padding: 3,
+                                    deterministic: true,
+                                    randomSeed: 42,
+                                    scale: 'sqrt',
+                                    spiral: 'rectangular',
+                                    transitionDuration: 0
+                                }}
+                            />
+                        </div>
+                        <div className="expanded-graph-box">
+                            <h3 className="modal-graphs-h3">Top Negative Words</h3>
+                            {bookData.negative_words && bookData.negative_weights ? (
+                                <WordCloud
+                                    words={processWordCloudData(bookData.negative_words, bookData.negative_weights)}
+                                    options={{
+                                        rotations: 0,
+                                        fontSizes: [24, 46],
+                                        padding: 3,
+                                        deterministic: true,
+                                        randomSeed: 42,
+                                        scale: 'sqrt',
+                                        spiral: 'rectangular',
+                                        transitionDuration: 0
+                                    }}
+                                />
+                            ) : (
+                                <p>No negative words data available</p>
+                            )}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        );
     };
 
     return (
@@ -115,7 +174,7 @@ const NLPOutput = ({ searchText }) => {
                     <>
                         <div className="title-row">
                             <h3 className="book-title">{bookData.title}</h3>
-                            <p className="book-rating">Average Rating: {bookData.avg_rating}</p>
+                            <p className="book-rating">Average Rating: {Number(bookData.avg_rating).toFixed(2)}</p>
                         </div>
                         <p className="rhs-title">Book Summary</p>
                         <p className="summary-text">{summaryData.summary}</p>
@@ -126,40 +185,54 @@ const NLPOutput = ({ searchText }) => {
             </div>
             <div className="center-graphs">
                 <div className="graphs">
-                {bookData && bookData.positive_words && bookData.positive_weights ? (  
-                <>
-                    <div className="graph-box">
-                        <h4>Top Positive Words</h4>
-                        <WordCloud
-                            words={processWordCloudData(bookData.positive_words, bookData.positive_weights)}
-                            options={{
-                                rotations: 0,
-                                fontSizes: [16, 30],
-                                padding: 3
-                            }}
-                        />
-                    </div>
-                    <div className="graph-box">
-                        <h5>Top Negative Words</h5>
-                        {bookData.negative_words && bookData.negative_weights ? (
-                            <WordCloud
-                                words={processWordCloudData(bookData.negative_words, bookData.negative_weights)}
-                                options={{
-                                    rotations: 0,
-                                    fontSizes: [16, 30],
-                                    padding: 3
-                                }}
-                            />
-                        ) : (
-                            <p>No negative words data available</p>
-                        )}
-                    </div>
-                </>
-                ) : !loading && searchText && (
-                    <p>No book data available</p>
-                )}
+                    {bookData && bookData.positive_words && bookData.positive_weights ? (  
+                        <>
+                            <div className="graph-box">
+                                <h5 className="graph-box-h5">Top Positive Words</h5>
+                                <WordCloud
+                                    words={processWordCloudData(bookData.positive_words, bookData.positive_weights)}
+                                    options={{
+                                        rotations: 0,
+                                        fontSizes: [12, 30],
+                                        padding: 0,
+                                        deterministic: true,
+                                        randomSeed: 41,
+                                        scale: 'sqrt',
+                                        spiral: 'rectangular',
+                                        transitionDuration: 0
+                                    }}
+                                />
+                            </div>
+                            <div className="graph-box">
+                                <h5 className="graph-box-h5">Top Negative Words</h5>
+                                {bookData.negative_words && bookData.negative_weights ? (
+                                    <WordCloud
+                                        words={processWordCloudData(bookData.negative_words, bookData.negative_weights)}
+                                        options={{
+                                            rotations: 0,
+                                            fontSizes: [12, 30],
+                                            padding: 0,
+                                            deterministic: true,
+                                            randomSeed: 41,
+                                            scale: 'sqrt',
+                                            spiral: 'rectangular',
+                                            transitionDuration: 0
+                                        }}
+                                    />
+                                ) : (
+                                    <p>No negative words data available</p>
+                                )}
+                            </div>
+                            <button className="expand-button" onClick={() => setIsModalOpen(true)}>
+                                <img src={expandIcon} alt="Expand" className="expand-icon" />
+                            </button>
+                        </>
+                    ) : !loading && searchText && (
+                        <p>No book data available</p>
+                    )}
                 </div>
             </div>
+            <GraphsModal />
         </div>
     );
 };

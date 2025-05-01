@@ -40,7 +40,7 @@ const Recommendations = () => {
                         <div key={index} className="book-item">
                             <div className="book-row ">
                                 <p className="book-title" >{book.title}</p>
-                                <p className="book-rating"> <i>Average Rating</i>: {book.avg_rating}</p>
+                                <p className="book-rating"> <i>Average Rating</i>: {Number(book.avg_rating).toFixed(2)}</p>
                             </div>
                         </div>
                     ))}

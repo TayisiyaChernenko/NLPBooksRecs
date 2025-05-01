@@ -40,7 +40,6 @@ const RHS = () => {
                                     handleSearch();
                                 }
                             }}
-                            onDoubleClick={handleDoubleClick}
                             type="text"
                         />
                     </label>

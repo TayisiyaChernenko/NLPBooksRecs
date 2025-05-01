@@ -52,8 +52,8 @@ const getTopRatedBooks = () => {
 const getSummariesByTitle = (title) => {
     return new Promise(function(resolve, reject) {
       pool.query(
-        'SELECT * FROM summaries WHERE title = $1',
-        [title],
+        'SELECT * FROM summaries WHERE title ILIKE $1 LIMIT 1',
+        [`%${title}%`],
         (error, results) => {
           if (error) {
             console.error('Database query error:', error);
