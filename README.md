@@ -27,11 +27,12 @@ but ended up using the Hugging Face BART model with Transformers.
 ### Running the program
 The program currently runs only locally. A furture goal would be to aquire a domain and host it publically. 
 1. 'Docker-compose up' the Posgres db
-2. From the node-postgres directory, run 'node index.js' to run the db locally
-3. From the UI/litLens directory, run 'npm run dev'
-4. Navigate to http://localhost:5173/
-5. Have fun !
-
+2. From the Database directory, run "python create_db.py" to create tables and upload the data to Postgres
+3. From the node-postgres directory, run 'node index.js' to run the db locally
+4. From the UI/litLens directory, run 'npm run dev'
+5. Navigate to http://localhost:5173/
+6. Have fun !
+7. 
 ### Video Link 
 https://youtu.be/cqpWSTgydn8
 The link provides a demonstration of the literaryLens website
