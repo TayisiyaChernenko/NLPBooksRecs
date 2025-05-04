@@ -14,12 +14,15 @@ to input a book title and receive structured insights from its reviews. The prot
 ### Data sources, approaches
 We use the UCSD Goodreads Dataset
 
-(https://cseweb.ucsd.edu/~jmcauley/datasets/goodreads.html). This data is extremely large, so we are
-considering limiting our analysis to a subset of books rather than every book for every genre.
+(https://cseweb.ucsd.edu/~jmcauley/datasets/goodreads.html). This data is extremely large, so we are limited
+our analysis to a subset of books rather than every book for every genre.
 
-For each of the two main topics, we are considering a couple approaches. For topic modeling, we
-will consider LDA and BERTopic. For review summarization, we will consider extractive
-summarization using TextRank.
+For each of the two main topics, we considered a couple approaches.
+
+For key sentitments, we used log odds analysis with the informed Dirichlet priors.
+
+For review summarization, we considered extractive summarization using TextRank,
+but ended up using the Hugging Face BART model with Transformers.
 
 ### Running the program
 The program currently runs only locally. A furture goal would be to aquire a domain and host it publically. 
@@ -28,3 +31,7 @@ The program currently runs only locally. A furture goal would be to aquire a dom
 3. From the UI/litLens directory, run 'npm run dev'
 4. Navigate to http://localhost:5173/
 5. Have fun !
+
+### Video Link 
+https://youtu.be/cqpWSTgydn8
+The link provides a demonstration of the literaryLens website
