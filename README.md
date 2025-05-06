@@ -32,7 +32,13 @@ The program currently runs only locally. A furture goal would be to aquire a dom
 4. From the UI/litLens directory, run 'npm run dev'
 5. Navigate to http://localhost:5173/
 6. Have fun !
-7. 
 ### Video Link 
 https://youtu.be/cqpWSTgydn8
 The link provides a demonstration of the literaryLens website
+
+### Directories 
+1. Preprocessing : Cleaning of data, transformations with NLP
+2. Database : Creates Postgres tables and uploads data
+3. UI : Frontend application
+4. node-postgres : Handles requests,replies, and connections to the database
+5. Report : Project report
